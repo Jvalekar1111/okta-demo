@@ -9,18 +9,19 @@ import Navbar from './Navbar';
 import Routes from './components/Routes';
 
 const oktaAuth = new OktaAuth(config.oidc);
+//await oktaAuth.start(); // start the service
 
 const App = () => {
   const navigate = useNavigate();
-  const restoreOriginalUri = (_oktaAuth,  originalUri) => {
+  const restoreOriginalUri = (_oktaAuth, originalUri) => {
     navigate(toRelativeUrl(originalUri || '/', window.location.origin));
   };
 
   return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
-      <Container text style={{marginTop: '7em'}} className="App">
+      <Container text style={{ marginTop: '7em' }} className="App">
         <header className="App-header">
-          <Navbar/>
+          <Navbar />
         </header>
         <main>
           <Routes />

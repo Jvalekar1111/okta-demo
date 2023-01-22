@@ -21,7 +21,13 @@ const Navbar = () => {
             <Image size="mini" src="/react.svg" />
             &nbsp;
             <Link to="/">Discount Tire Login</Link>
-          </Menu.Item>     
+          </Menu.Item> 
+         {authState.isAuthenticated && (
+            <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>
+          )}
+          {!authState && !authState.isAuthenticated && (
+            <Menu.Item onClick={login}>Login</Menu.Item>
+          )}	  
                   
         </Container>
       </Menu>

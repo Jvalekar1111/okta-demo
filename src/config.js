@@ -9,11 +9,8 @@ export default {
     clientId: CLIENT_ID,
     issuer: ISSUER,
     redirectUri: REDIRECT_URI,
-    scopes: ['openid', 'profile', 'email'],
+    scopes: ['openid', 'profile', 'email', 'posRole'],
     pkce: true,
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
-  },
-  resourceServer: {
-    messagesUrl: 'http://localhost:8000/api/messages',
   },
 };

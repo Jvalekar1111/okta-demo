@@ -1,7 +1,5 @@
-import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
-import { Button, Header } from 'semantic-ui-react';
-import { Link, Redirect } from "wouter";
+import { useOktaAuth } from '@okta/okta-react';
 
 const Home = () => {
   const { authState, oktaAuth } = useOktaAuth();
@@ -14,29 +12,27 @@ const Home = () => {
     } else {
       oktaAuth.getUser().then((info) => {
         setUserInfo(info);
+        var oktaTokenrequest = window.oAppEnablementPosInstance_CST.createTokenRequest(authState.accessToken.accessToken, authState.idToken.idToken);
+        console.log(oktaTokenrequest);
+        window.oAppEnablementPosInstance_CST.pushOktaToken(
+          'handleOktaLoginOk',
+          'handleOktaLoginFailed',
+          oktaTokenrequest
+        );
+        //oktaAuth.stop();
+      }).catch((err) => {
+        console.error(err);
       });
     }
   }, [authState, oktaAuth]); // Update if authState changes
-  return (
-    <div>
-      <div>
-        { authState.isAuthenticated && !userInfo
-        && <div>Loading user information...</div>}
 
-        {authState.isAuthenticated && userInfo
-        && (
-        <div>
-          <p>
-            Welcome back,&nbsp;
-            {userInfo.name}
-            !
-			<Redirect to="/Profile" />
-          </p>         
-        </div>
-        )}	
-        
+  if (userInfo) {
+    return (
+      <div>
+        <p>You have successfuly sign in ....{userInfo.name}</p>
       </div>
-    </div>
-  );
+    );
+  }
 };
+
 export default Home;
