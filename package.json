@@ -1,13 +1,14 @@
-{ "homepage":"http://Jvalekar1111.github.io/okta-demo", 
+{
   "name": "dt-okta-login",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://Jvalekar1111.github.io/okta-demo",
   "scripts": {
     "start": "vite",
-	"predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@okta/okta-auth-js": "7.2.0",
