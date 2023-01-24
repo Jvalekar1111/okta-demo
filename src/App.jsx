@@ -7,6 +7,7 @@ import { Container } from 'semantic-ui-react';
 import config from './config';
 import Navbar from './Navbar';
 import Routes from './components/Routes';
+import './styles/style.css'
 
 const oktaAuth = new OktaAuth(config.oidc);
 //await oktaAuth.start(); // start the service

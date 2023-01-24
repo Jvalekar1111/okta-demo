@@ -26,13 +26,18 @@ const Home = () => {
     }
   }, [authState, oktaAuth]); // Update if authState changes
 
-  if (userInfo) {
-    return (
-      <div>
-        <p>You have successfuly sign in ....{userInfo.name}</p>
-      </div>
-    );
-  }
+	if (userInfo) {
+		return (
+			<div>
+				<div>
+					<p>You have successfuly sign in ....{userInfo.name}</p>
+				</div>
+			</div>
+		);
+	}
+
+
+  
 };
 
 export default Home;
